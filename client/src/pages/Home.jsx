@@ -22,7 +22,7 @@ const Home = () => {
           </p>
 
           <div style={styles.btnGroup}>
-            <Link to="/register" style={styles.primaryBtn}>
+            <Link to="/signup" style={styles.primaryBtn}>
               Get Started <ArrowRight size={18} />
             </Link>
             <Link to="/login" style={styles.secondaryBtn}>
