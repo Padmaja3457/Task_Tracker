@@ -47,5 +47,16 @@ router.patch('/:id', protect, async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 });
+// @route   DELETE /api/tasks/:id
+// @desc    Delete a task (Admin Only)
+router.delete('/:id', protect, adminOnly, async (req, res) => {
+  try {
+    const task = await Task.findByIdAndDelete(req.params.id);
+    if (!task) return res.status(404).json({ message: 'Task not found' });
+    res.json({ message: 'Task removed' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 module.exports = router;

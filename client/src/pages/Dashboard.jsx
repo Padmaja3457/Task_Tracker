@@ -3,7 +3,7 @@ import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
 import { 
   Plus, Calendar, Users, AlertCircle, X, 
-  CheckCircle2, Clock, LayoutDashboard 
+  CheckCircle2, Clock, LayoutDashboard, Trash2 
 } from 'lucide-react';
 
 const Dashboard = () => {
@@ -70,6 +70,21 @@ const Dashboard = () => {
       console.error("Update failed", err);
     }
   };
+  const deleteTask = async (id) => {
+  if (window.confirm("Are you sure you want to delete this task?")) {
+    try {
+      const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+      const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
+      
+      await axios.delete(`https://tasktracker-production-9ded.up.railway.app/api/tasks/${id}`, config);
+      
+      fetchTasks(); // Refresh list after deletion
+    } catch (err) {
+      console.error("Delete failed", err);
+      alert("Failed to delete task.");
+    }
+  }
+};
 
   // Calculations
   const completedCount = tasks.filter(t => t.status === 'Completed').length;
@@ -143,6 +158,14 @@ const Dashboard = () => {
                       {task.status === 'Completed' ? <CheckCircle2 size={12} /> : <Clock size={12} />}
                       {task.status}
                     </span>
+                    {user?.role === 'Admin' && (
+      <Trash2 
+        size={16} 
+        color="#dc2626" 
+        style={{ cursor: 'pointer', marginLeft: '10px' }} 
+        onClick={() => deleteTask(task._id)} 
+      />
+    )}
                     {isOverdue && (
                       <span style={styles.urgentBadge}>
                         <AlertCircle size={10} /> OVERDUE
