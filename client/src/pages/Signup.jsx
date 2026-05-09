@@ -35,7 +35,7 @@ const Signup = () => {
               <label style={styles.label}>Full Name</label>
               <input 
                 type="text" 
-                placeholder="Gajjarapu Padmaja" 
+                placeholder="John Doe" 
                 onChange={(e)=>setFormData({...formData, name: e.target.value})} 
                 style={styles.input} 
                 required 

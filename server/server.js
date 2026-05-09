@@ -12,7 +12,7 @@ connectDB();
 
 // Middleware
 app.use(cors({
-  origin: 'https://task-tracker-seven-self.vercel.app/', 
+  origin: 'https://task-tracker-seven-self.vercel.app', 
   credentials: true
 }));
 app.use(express.json());
