@@ -10,7 +10,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/signup', formData);
+      await axios.post('https://tasktracker-production-9ded.up.railway.app/api/auth/signup', formData);
       alert('Signup successful! Please login.');
       navigate('/login');
     } catch (err) {

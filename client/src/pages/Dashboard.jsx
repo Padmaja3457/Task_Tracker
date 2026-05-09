@@ -20,7 +20,7 @@ const Dashboard = () => {
       const userInfo = JSON.parse(localStorage.getItem('userInfo'));
       if (!userInfo) return;
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      const { data } = await axios.get('http://localhost:5000/api/tasks', config);
+      const { data } = await axios.get('https://tasktracker-production-9ded.up.railway.app/api/tasks', config);
       setTasks(data);
     } catch (err) {
       console.error("Error fetching tasks:", err);
@@ -30,7 +30,7 @@ const Dashboard = () => {
   // NEW: Fetch member list for the dropdown
   const fetchMembers = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/auth/members');
+      const { data } = await axios.get('https://tasktracker-production-9ded.up.railway.app/api/auth/members');
       setMembers(data);
     } catch (err) {
       console.error("Error fetching members:", err);
@@ -48,7 +48,7 @@ const Dashboard = () => {
     e.preventDefault();
     try {
       const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-      await axios.post('http://localhost:5000/api/tasks', newTask, {
+      await axios.post('https://tasktracker-production-9ded.up.railway.app/api/tasks', newTask, {
         headers: { Authorization: `Bearer ${userInfo.token}` }
       });
       setShowModal(false);
@@ -62,7 +62,7 @@ const Dashboard = () => {
   const updateStatus = async (id) => {
     try {
       const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-      await axios.patch(`http://localhost:5000/api/tasks/${id}`, { status: 'Completed' }, {
+      await axios.patch(`https://tasktracker-production-9ded.up.railway.app/api/tasks/${id}`, { status: 'Completed' }, {
         headers: { Authorization: `Bearer ${userInfo.token}` }
       });
       fetchTasks();

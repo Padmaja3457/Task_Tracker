@@ -11,7 +11,7 @@ const taskRoutes = require('./routes/taskRoutes');
 connectDB();
 
 // Middleware
-app.use(cors());
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 // ... existing middleware ...
 app.use('/api/auth', authRoutes);

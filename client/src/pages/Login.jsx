@@ -13,7 +13,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const { data } = await axios.post('https://tasktracker-production-9ded.up.railway.app/api/auth/login', { email, password });
       
       localStorage.setItem('userInfo', JSON.stringify(data));
       setUser(data);
