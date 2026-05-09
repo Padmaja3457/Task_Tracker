@@ -11,7 +11,10 @@ const taskRoutes = require('./routes/taskRoutes');
 connectDB();
 
 // Middleware
-app.use(cors({ origin: '*' }));
+app.use(cors({
+  origin: 'https://task-tracker-seven-self.vercel.app/', 
+  credentials: true
+}));
 app.use(express.json());
 // ... existing middleware ...
 app.use('/api/auth', authRoutes);
