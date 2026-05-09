@@ -1,0 +1,10 @@
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Sensitive environment variables (passwords)
+.env
+
+# Logs and system files
+npm-debug.log*
+.DS_Store

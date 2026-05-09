@@ -1,0 +1,23 @@
+/* Ensure the body occupies full width without white margins */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* This class ensures content is centered but stretches correctly */
+.page-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%; /* Matches Navbar padding */
+  box-sizing: border-box;
+}
+
+.full-bg {
+  width: 100%;
+  background: #f8fafc;
+  min-height: calc(100vh - 70px); /* Height minus Navbar */
+}
